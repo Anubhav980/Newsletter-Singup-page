@@ -5,6 +5,9 @@ const body = require("body-parser");
 const request = require("request");
 const https = require("https");
 
+const token = sec.token;
+const api = sec.api;
+
 const app = express();
 app.use(body.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -31,10 +34,10 @@ app.post("/",function(req,res){
     ]
   };
   const jsonstringy = JSON.stringify(data);
-  const url = "https://us11.api.mailchimp.com/3.0/lists/25b1c6c250";
+  const url = "https://us11.api.mailchimp.com/3.0/lists/"+token;
   const options = {
     method: "post",
-    auth: "anubhav1:f1f7093ef6d2ac599b8ce65c968a940f-us11"
+    auth: api
   };
 
 const request = https.request(url,options,function(response){
